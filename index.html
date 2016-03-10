@@ -1,0 +1,43 @@
+<html ng-app="hue-app">
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<style>
+			body { 
+				font-family: "Verdana", Times, serif;
+				background-color: #010101;
+				color: white;
+			}
+			p { 
+				font-size: 60px;
+				color: white;
+				font-weight: bold;
+			}
+			p {
+				text-align: center;
+				color: #bada55;
+			}
+			img {
+				margin: 0 auto;
+				display: block;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<img src="https://escapepublishingblog.files.wordpress.com/2014/10/scary-sully.jpg">
+		<p>Sully</p>
+		<div ng-controller="HueController as hueCtrl">
+			{{hueCtrl.title}}
+			<ul>
+				<div ng-repeat="light in hueCtrl.lights">
+					<h2>{{light.name}}</h2>
+					<button class="btn btn-default" ng-click="hueCtrl.lightSwitch($index)">
+						Switch
+					</button>
+				</div>
+			</ul>
+		</div>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+	</body>
+</html>
