@@ -1,0 +1,24 @@
+body {
+    font-family: "Verdana", Times, serif;
+    background-color: #010101;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+}
+
+img {
+    margin: 0 auto;
+    display: block;
+    margin: 20px 0;
+    width: 100%;
+}
+.wrapper {
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.light {
+    margin: 0 0 60px 0;
+}

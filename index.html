@@ -1,43 +1,34 @@
 <html ng-app="hue-app">
 	<head>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-		<style>
-			body { 
-				font-family: "Verdana", Times, serif;
-				background-color: #010101;
-				color: white;
-			}
-			p { 
-				font-size: 60px;
-				color: white;
-				font-weight: bold;
-			}
-			p {
-				text-align: center;
-				color: #bada55;
-			}
-			img {
-				margin: 0 auto;
-				display: block;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="node_modules/angularjs-slider/dist/rzslider.css"/>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
 	</head>
-	
 	<body>
-		<img src="https://escapepublishingblog.files.wordpress.com/2014/10/scary-sully.jpg">
-		<p>Sully</p>
-		<div ng-controller="HueController as hueCtrl">
-			{{hueCtrl.title}}
-			<ul>
-				<div ng-repeat="light in hueCtrl.lights">
-					<h2>{{light.name}}</h2>
-					<button class="btn btn-default" ng-click="hueCtrl.lightSwitch($index)">
-						Switch
-					</button>
-				</div>
-			</ul>
+		<div class="wrapper" ng-controller="HueController as hueCtrl">
+			<h1>{{hueCtrl.title}}</h1>
+            <img src="/palette.png">
+            <div ng-repeat="light in hueCtrl.lights">
+                <div class="light">
+                    <small>{{light.name}}: {{light.state.on}} <a href ng-click="light.state.on = !light.state.on">switch</a></small>
+                    <rzslider
+                        rz-slider-model="light.state.hue"
+                        rz-slider-options="light.optionsHue">
+                    </rzslider>
+                    <rzslider
+                        rz-slider-model="light.state.sat"
+                        rz-slider-options="light.optionsSat">
+                    </rzslider>
+                    <rzslider
+                        rz-slider-model="light.state.bri"
+                        rz-slider-options="light.optionsBri">
+                    </rzslider>
+                </div>
+            </div>
 		</div>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+
+		<script type="text/javascript" src="node_modules/angular/angular.js"></script>
+        <script type="text/javascript" src="node_modules/angularjs-slider/dist/rzslider.js"></script>
 		<script type="text/javascript" src="app.js"></script>
+
 	</body>
 </html>
